@@ -44,6 +44,12 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 	    $group->appendChild($node);
 
 	    $group->setAttribute('style', "opacity:0.1"); # default opacity for nodes of the graph
+
+	    
+	    my $durM= 3; # needs to be set to max of durs => create new list with begs and durs
+	    foreach my $ell ($xpc->findnodes('.//x:ellipse', $group)) {
+		$ell->setAttribute('fill', sprintf("hsl(%d,100\%,50\%)", 85 - $dur * 85 / $durM));
+	    }
 	}
     }
 }
