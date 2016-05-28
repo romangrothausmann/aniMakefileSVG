@@ -19,7 +19,7 @@ base. = $(subst $(SPACE),.,$(filter-out $(lastword $(subst ., ,$1)),$(subst ., ,
 
 
 %.asvg : %.svg stime.lst
-	aniMakefileSVG stime.lst < $< > $@
+	aniMakefileSVG.pl stime.lst $< > $@
 
 %.avi : %.asvg
 	MP4Client -no-audio -size 100x1000  -avi 0-10 -fps 25  $< -out $@
