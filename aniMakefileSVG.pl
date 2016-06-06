@@ -1,20 +1,38 @@
 #!/usr/bin/perl
 
 use strict;
+# use warnings;
 
 use XML::LibXML;
-use List::Util qw( min );
+use List::Util qw( min max );
 
 ## read in whole stime.lst
 open(F,$ARGV[0]); # http://www.tek-tips.com/viewthread.cfm?qid=1068323
 my @list=<F>;
 close(F);
 
+my @matrix; # separate from @list because @list is needed for grep later on!
+foreach my $line (@list){ # http://perlmaven.com/how-to-read-a-csv-file-using-perl
+  chomp $line;
+  my @fields= split ' ', $line;
+  push (@matrix, [@fields]); # http://stackoverflow.com/questions/14018358/pushing-array-as-an-item-to-another-array-not-creating-multidimensional-array#14018742
+}
+
+# print $list[1][1], "\n";
+# print @{$list[0]}, "\n"; # row! http://perl-seiten.privat.t-online.de/html/perl_array.html
+
+my @stimeA= map $_->[0], @matrix; # extract column: http://www.perlmonks.org/?node_id=416416
+my @etimeA= map $_->[1], @matrix; # alternative: Text::CSV_XS with $csv->fields(); http://stackoverflow.com/questions/3199000/how-to-print-all-values-of-an-array-in-perl
+
+my @durA= map {$etimeA[$_] - $stimeA[$_]} 0..$#etimeA; # @etimeA - @stimeA not possible: http://stackoverflow.com/questions/7079685/how-to-subtract-values-in-2-different-arrays-in-perl#7080649
+  
 ## get smallest stime
-my $minl= min @list; # http://stackoverflow.com/questions/10701210/how-to-find-maximum-and-minimum-value-in-an-array-of-integers-in-perl
-my @mins= split ' ', $minl; # for split ' ' <=> /\s+/
-my $min= $mins[0];
-print STDERR "Min: $min\n"; # http://stackoverflow.com/questions/10478884/are-there-rules-which-tell-me-what-form-of-stdout-stderr-sdtin-i-have-to-choose
+my $stimeMin= min(@stimeA); # http://stackoverflow.com/questions/10701210/how-to-find-maximum-and-minimum-value-in-an-array-of-integers-in-perl
+print STDERR "stimeMin: $stimeMin\n"; # http://stackoverflow.com/questions/10478884/are-there-rules-which-tell-me-what-form-of-stdout-stderr-sdtin-i-have-to-choose
+
+## get longest duration
+my $durMax= max(@durA);
+print STDERR "durMax: $durMax\n";
 
 
 my $doc = XML::LibXML->load_xml(location => $ARGV[1]);
@@ -30,7 +48,7 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 
 	my @f= grep { /\Q$fname\E/ } @list; # http://perlmeme.org/howtos/perlfunc/grep_function.html  escape special symbols: http://stackoverflow.com/questions/2001176/how-can-i-escape-meta-characters-when-i-interpolate-a-variable-in-perls-match-o#2001239
 	my @words= split /\s+/, $f[0];
-	my $beg= ($words[0] - $min);
+	my $beg= ($words[0] - $stimeMin);
 	my $dur= ($words[1] - $words[0]);
 
 	if($beg >= 0 && $dur > 0){
@@ -46,9 +64,8 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 	    $group->setAttribute('style', "opacity:0.1"); # default opacity for nodes of the graph
 
 	    
-	    my $durM= 3; # needs to be set to max of durs => create new list with begs and durs
 	    foreach my $ell ($xpc->findnodes('.//x:ellipse', $group)) {
-		$ell->setAttribute('fill', sprintf("hsl(%d,100\%,50\%)", 85 - $dur * 85 / $durM));
+		$ell->setAttribute('fill', sprintf("hsl(%d,100\%,50\%)", 85 - $dur * 85 / $durMax));
 	    }
 	}
     }
