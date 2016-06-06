@@ -5,6 +5,42 @@ use strict;
 
 use XML::LibXML;
 use List::Util qw( min max );
+use POSIX; # for: floor
+
+sub hsv2rgb { # http://www.perlmonks.org/?node_id=139486
+    my ( $h, $s, $v ) = @_;
+
+    if ( $s == 0 ) {
+        return $v, $v, $v;
+    }
+
+    $h /= 60;
+    my $i = floor( $h );
+    my $f = $h - $i;
+    my $p = $v * ( 1 - $s );
+    my $q = $v * ( 1 - $s * $f );
+    my $t = $v * ( 1 - $s * ( 1 - $f ) );
+
+    if ( $i == 0 ) {
+        return $v, $t, $p;
+    }
+    elsif ( $i == 1 ) {
+        return $q, $v, $t;
+    }
+    elsif ( $i == 2 ) {
+        return $p, $v, $t;
+    }
+    elsif ( $i == 3 ) {
+        return $p, $q, $v;
+    }
+    elsif ( $i == 4 ) {
+        return $t, $p, $v;
+    }
+    else {
+        return $v, $p, $q;
+    }
+}
+
 
 ## read in whole stime.lst
 open(F,$ARGV[0]); # http://www.tek-tips.com/viewthread.cfm?qid=1068323
@@ -64,8 +100,11 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 	    $group->setAttribute('style', "opacity:0.1"); # default opacity for nodes of the graph
 
 	    
+	    my @rgb= hsv2rgb(85 - $dur * 85 / $durMax, 1, 1);
+	    @rgb= map int($_ * 255), @rgb;
 	    foreach my $ell ($xpc->findnodes('.//x:ellipse', $group)) {
-		$ell->setAttribute('fill', sprintf("hsl(%d,100\%,50\%)", 85 - $dur * 85 / $durMax));
+		# $ell->setAttribute('fill', sprintf("hsl(%d,100\%,50\%)", 85 - $dur * 85 / $durMax)); # hsl supported by firefox but not by gpac
+		$ell->setAttribute('fill', sprintf("rgb(%s)", join(",", @rgb)));
 	    }
 	}
     }
