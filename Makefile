@@ -22,7 +22,8 @@ base. = $(subst $(SPACE),.,$(filter-out $(lastword $(subst ., ,$1)),$(subst ., ,
 	aniMakefileSVG.pl stime.lst $< > $@
 
 %.avi : %.asvg
-	MP4Client -no-audio -size 100x1000  -avi 0-10 -fps 25  $< -out $@
+	$(eval SIZE= $(shell grep -oP 'viewBox="\K.*?(?=")' $< | awk '{printf("%dx%d", $$3-$$1, $$4-$$2)}')) # http://unix.stackexchange.com/questions/13466/can-grep-output-only-specified-groupings-that-match
+	MP4Client -no-audio -size $(SIZE)  -avi 0-10 -fps 25  $< -out $@
 
 %.mp4 : %.avi
 	mencoder $< -o $@  -ovc x264 -x264encopts preset=veryslow:fast_pskip=0:tune=film:frameref=15:bitrate=3000:threads=auto:pass=1  -fps 25 && \
