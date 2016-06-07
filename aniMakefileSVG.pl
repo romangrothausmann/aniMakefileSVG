@@ -107,8 +107,19 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 		$ell->setAttribute('fill', sprintf("rgb(%s)", join(",", @rgb)));
 	    }
 	}
+
+	## replace title of gv-nodes with fname
+	if ($group->getAttribute('class') eq "node"){ # http://stackoverflow.com/questions/14046669/perl-string-compare-with-eq-vs
+	    foreach my $title ($xpc->findnodes('.//x:title/text()', $group)) {
+		printf(STDERR "%s : %s\n", $title->to_literal,  $fname);
+		$title->setData($fname); # http://www.perlmonks.org/?node_id=900439
+	    }
+	}
+	
+	## shorten fname in text nodes
     }
 }
+print STDERR "All done.\n";
 
 print $doc->toString;
 
