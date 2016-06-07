@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!Makefile
+!aniMakefileSVG.pl
+
+# ...even if they are in subdirectories
+!*/

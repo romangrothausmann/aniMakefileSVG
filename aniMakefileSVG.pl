@@ -42,6 +42,8 @@ sub hsv2rgb { # http://www.perlmonks.org/?node_id=139486
 }
 
 
+die "Usage: $0 stime.lst SVG aSVG\n" if @ARGV != 3;
+
 ## read in whole stime.lst
 open(F,$ARGV[0]); # http://www.tek-tips.com/viewthread.cfm?qid=1068323
 my @list=<F>;
@@ -124,5 +126,5 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 }
 print STDERR "All done.\n";
 
-print $doc->toString;
+return $doc->toFile($ARGV[2], 1); # 0: as read; 1: indent; 2: extra \n; http://search.cpan.org/dist/XML-LibXML/lib/XML/LibXML/Document.pod
 

@@ -19,7 +19,7 @@ base. = $(subst $(SPACE),.,$(filter-out $(lastword $(subst ., ,$1)),$(subst ., ,
 
 
 %.asvg : %.svg stime.lst
-	aniMakefileSVG.pl stime.lst $< > $@
+	aniMakefileSVG.pl stime.lst $< $@
 
 %.avi : %.asvg
 	$(eval SIZE= $(shell grep -oP 'viewBox="\K.*?(?=")' $< | awk '{printf("%dx%d", $$3-$$1, $$4-$$2)}')) # http://unix.stackexchange.com/questions/13466/can-grep-output-only-specified-groupings-that-match
