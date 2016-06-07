@@ -1,4 +1,7 @@
 
+GPAC?=/opt/gpac-git/
+
+
 ### exemplary Makefile
 ## needs a dot/graphviz file (*.gv) and a list of start and end time list (stime.lst)
 ## run make test/all.gv test/stime.lst to generate exemplary all.gv and stime.lst under test/
@@ -6,6 +9,18 @@
 
 
 SHELL:= /bin/bash
+
+## curdir for aniMakefileSVG.pl:
+export PATH:= $(CURDIR):$(PATH)
+
+## gpac for "rendering"
+export PATH:= $(GPAC)/bin:$(PATH)
+export LD_LIBRARY_PATH:=$(GPAC)/lib:$(LD_LIBRARY_PATH)
+
+EXECUTABLES= aniMakefileSVG.pl MP4Client
+
+K:= $(foreach exec,$(EXECUTABLES),\
+	$(if $(shell PATH=$(PATH) which $(exec)),some string,$(error "No $(exec) in PATH")))
 
 
 SPACE := $(eval) $(eval)
@@ -19,7 +34,7 @@ base. = $(subst $(SPACE),.,$(filter-out $(lastword $(subst ., ,$1)),$(subst ., ,
 
 
 %.asvg : %.svg stime.lst
-	$(eval ETIME?= $(shell \
+	$(eval ETIME?= $(shell PATH=$(PATH) \
 	aniMakefileSVG.pl stime.lst $< $@ ))
 
 %.avi : %.asvg

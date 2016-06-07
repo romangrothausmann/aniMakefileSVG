@@ -130,5 +130,5 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 }
 print STDERR "All done.\n";
 
-return $doc->toFile($ARGV[2], 1); # 0: as read; 1: indent; 2: extra \n; http://search.cpan.org/dist/XML-LibXML/lib/XML/LibXML/Document.pod
+exit $doc->toFile($ARGV[2], 1); # 0: as read; 1: indent; 2: extra \n; http://search.cpan.org/dist/XML-LibXML/lib/XML/LibXML/Document.pod
 
