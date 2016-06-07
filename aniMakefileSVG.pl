@@ -92,8 +92,8 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 	    $node->setAttribute('attributeName', "opacity");
 	    $node->setAttribute('from', ".1");
 	    $node->setAttribute('to', "1");
-	    $node->setAttribute('begin', sprintf('%ds', $beg));
-	    $node->setAttribute('dur', sprintf('%ds', $dur));
+	    $node->setAttribute('begin', sprintf('%dms', $beg));
+	    $node->setAttribute('dur', sprintf('%dms', $dur));
 	    $node->setAttribute('fill', "freeze");
 	    $group->appendChild($node);
 

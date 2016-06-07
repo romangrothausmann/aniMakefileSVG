@@ -13,6 +13,7 @@ clean:
 	-rm all.dot.Make.svg all.dot.Make.asvg all.dot.Make.avi all.dot.Make.mp4
 	-rm divx2pass.log divx2pass.log.mbtree x.a x.a.stime x.b x.b.stime x.z x.z.stime
 	-rm x_t1_t2.c x_t1_t2.c.stime
+	-rm x.y x.y.stime
 
 
 
@@ -26,9 +27,14 @@ clean:
 	sleep 1
 	touch $@
 
-%.z: %_t1_t2.c %.b
+%.z: %_t1_t2.c %.b x.y
 	touch $@.stime
 	sleep 4
+	touch $@
+
+x.y:
+	touch $@.stime
+	sleep .2
 	touch $@
 
 %.a:
@@ -41,8 +47,8 @@ clean:
 stime.lst : all
 	for i in `find -name '*.stime'`; do \
 	    printf "%s\t%s\t%s\n" \
-		`ls -lgG --time-style='+%s' $$i | awk '{print $$4}'` \
-		` ( ls -lgG --time-style='+%s' $${i%.stime} || ls -lgG --time-style='+%s' $${i%.stime}.gz ) | awk '{print $$4}'` \
+		`ls -lgG --time-style='+%s %N' $$i | awk '{printf ("%d", ($$4 + $$5/1e9)*1e3)}'` \
+		` ( ls -lgG --time-style='+%s %N' $${i%.stime} || ls -lgG --time-style='+%s %N' $${i%.stime}.gz ) | awk '{printf ("%d", ($$4 + $$5/1e9)*1e3)}'` \
 		$${i%.stime} ; \
 	done > $@
 
