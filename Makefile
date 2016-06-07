@@ -79,6 +79,7 @@ test/allJ6 : test/Makefile
 	$(eval pos= $(subst .,,$(pos)))
 
 	$(pos) -Tsvg -o $@ $<
+	sed -i 's/font-family="Times,serif"/font-family="sans"/g' $@ # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-family
 
 
 ## prevent removal of any intermediate files
