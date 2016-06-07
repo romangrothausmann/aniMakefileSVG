@@ -89,6 +89,6 @@ test/allJ6 : test/Makefile
 
 
 ## prevent removal of any intermediate files
-.PRECIOUS: %.Make.svg %.asvg %.avi
+.PRECIOUS: %.Make.svg %.asvg
 
 
