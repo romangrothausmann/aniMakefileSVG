@@ -12,17 +12,23 @@ clean:
 	-rm all.gv stime.lst
 	-rm all.dot.Make.svg all.dot.Make.asvg all.dot.Make.avi all.dot.Make.mp4
 	-rm divx2pass.log divx2pass.log.mbtree x.a x.a.stime x.b x.b.stime x.z x.z.stime
+	-rm x_t1_t2.c x_t1_t2.c.stime
 
 
+
+%_t1_t2.c: %.a
+	touch $@.stime
+	sleep 2
+	touch $@
 
 %.b: %.a
 	touch $@.stime
 	sleep 1
 	touch $@
 
-%.z: %.b
+%.z: %_t1_t2.c %.b
 	touch $@.stime
-	sleep 2
+	sleep 4
 	touch $@
 
 %.a:
