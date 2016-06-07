@@ -32,8 +32,13 @@ base. = $(subst $(SPACE),.,$(filter-out $(lastword $(subst ., ,$1)),$(subst ., ,
 
 
 
-test : test/all.gv test/stime.lst
+test : test/all test/all.gv test/stime.lst
 	$(MAKE) -C test -f ../Makefile all.dot.Make.mp4
+	mv test/all.dot.Make.mp4 test/all.dot.MakeJ1.mp4
+
+test/all : test/Makefile
+	$(MAKE) -C test clean
+	$(MAKE) -C test
 
 test/all.gv : test/Makefile
 	$(MAKE) -C test  all.gv
@@ -41,6 +46,13 @@ test/all.gv : test/Makefile
 test/stime.lst : test/Makefile
 	$(MAKE) -C test  stime.lst
 
+testJ6 : test/allJ6 test/all.gv test/stime.lst
+	$(MAKE) -C test -f ../Makefile all.dot.Make.mp4
+	mv test/all.dot.Make.mp4 test/all.dot.MakeJ6.mp4
+
+test/allJ6 : test/Makefile
+	$(MAKE) -C test clean
+	$(MAKE) -j6 -C test
 
 
 .SECONDEXPANSION: # https://www.gnu.org/software/make/manual/html_node/Secondary-Expansion.html
