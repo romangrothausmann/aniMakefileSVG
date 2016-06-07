@@ -29,7 +29,13 @@ base. = $(subst $(SPACE),.,$(filter-out $(lastword $(subst ., ,$1)),$(subst ., ,
 
 
 
-.PHONY: test
+.PHONY: test testJ6 clean
+
+
+clean:
+	-rm all.gv stime.lst
+	-rm *.svg *.asvg *.avi *.mp4
+	-rm divx2pass.log divx2pass.log.mbtree
 
 
 
