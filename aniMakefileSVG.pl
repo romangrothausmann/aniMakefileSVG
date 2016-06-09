@@ -78,7 +78,8 @@ print STDOUT $totDur, "\n"; # STDOUT preserved for this output (used in Makefile
 printf STDERR "totDur: %fs\n", $totDur; # STDOUT preserved for this output (used in Makefile)
 
 
-my $doc = XML::LibXML->load_xml(location => $ARGV[1]);
+my $doc = XML::LibXML->load_xml(location => $ARGV[1],
+				keep_blanks => 0); # essential for toFile mode 1|2 have an effect: http://www.perlmonks.org/?node_id=830411
 my $xpc = XML::LibXML::XPathContext->new($doc);     # create the XPath evaluator
 $xpc->registerNs(x => 'http://www.w3.org/2000/svg'); # declare the namespace (NS) as x
 print STDERR "Parsing done.\n";
