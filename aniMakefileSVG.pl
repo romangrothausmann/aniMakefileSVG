@@ -73,8 +73,9 @@ my $durMax= max(@durA);
 print STDERR "durMax: $durMax\n";
 
 my $etimeMax= max(@etimeA);
-print STDOUT ($etimeMax - $stimeMin)/1e3, "\n"; # STDOUT preserved for this output (used in Makefile)
-printf STDERR "totDur: %fs\n", ($etimeMax - $stimeMin)/1e3; # STDOUT preserved for this output (used in Makefile)
+my $totDur= ($etimeMax - $stimeMin)/1e3;
+print STDOUT $totDur, "\n"; # STDOUT preserved for this output (used in Makefile)
+printf STDERR "totDur: %fs\n", $totDur; # STDOUT preserved for this output (used in Makefile)
 
 
 my $doc = XML::LibXML->load_xml(location => $ARGV[1]);
