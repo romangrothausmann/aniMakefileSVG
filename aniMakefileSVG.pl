@@ -111,12 +111,18 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 	    $node->setAttribute('attributeName', "opacity");
 	    $node->setAttribute('from', ".1");
 	    $node->setAttribute('to', "1");
-	    $node->setAttribute('begin', sprintf('timer.begin+%dms', $beg)); # start relative to timer
-	    $node->setAttribute('dur', sprintf('%dms', $dur));
+	    $node->setAttribute('begin', sprintf('timer.begin+%dms', $beg+1)); # start relative to timer, +1ms to avoid time clash with set-node with timer.begin+0ms
+	    $node->setAttribute('dur', sprintf('%dms', $dur+1)); # +1ms because start also has +1ms
 	    $node->setAttribute('fill', "freeze");
 	    $group->appendChild($node);
 
-	    $group->setAttribute('style', "opacity:0.1"); # default opacity for nodes of the graph
+	    ## replace default value with set-element (which can be timed;-))
+	    # $group->setAttribute('style', "opacity:0.1"); # default opacity for nodes of the graph 
+	    $node = $doc->createElement('set');
+	    $node->setAttribute('attributeName', "opacity");
+	    $node->setAttribute('begin', "timer.begin");
+	    $node->setAttribute('to', ".1");
+	    $group->appendChild($node);
 
 	    
 	    my @rgb= hsv2rgb(85 - $dur * 85 / $durMax, 1, 1);

@@ -43,7 +43,11 @@ clean:
 	$(eval ETIME?= $(shell PATH=$(PATH) \
 	aniMakefileSVG.pl stime.lst $< $@ ))
 
-%.avi : %.asvg
+## just for MP4Client which isn't happy with the timer
+%.a.svg : %.asvg
+	sed 's/timer.begin//g;s|<animate id="timer".*"/>||g' $< > $@
+
+%.avi : %.a.svg
 	$(eval SIZE= $(shell grep -oP 'viewBox="\K.*?(?=")' $< | awk '{printf("%dx%d", $$3-$$1, $$4-$$2)}')) # http://unix.stackexchange.com/questions/13466/can-grep-output-only-specified-groupings-that-match
 	MP4Client -no-audio -size $(SIZE)  -avi 0-$(ETIME) -fps 25  $< -out $@
 
