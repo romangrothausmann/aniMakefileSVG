@@ -4,68 +4,103 @@
  -->
 <!-- Title: G Pages: 1 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240pt" height="260pt" viewBox="0.00 0.00 240.00 260.00">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
-<title>G</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-256 236,-256 236,4 -4,4"/>
-<!-- n2 -->
-<g id="node1" class="node"><title>all</title>
-<ellipse fill="none" stroke="red" cx="116" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="116" y="-14.3" font-family="sans" font-size="14.00">all</text>
-</g>
-<!-- n5 -->
-<g id="node2" class="node" style="opacity:0.1"><title>x.a</title>
-<ellipse fill="rgb(255,90,0)" stroke="red" cx="71" cy="-234" rx="27" ry="18"/>
-<text text-anchor="middle" x="71" y="-230.3" font-family="sans" font-size="14.00">x.a</text>
-<animate attributeName="opacity" from=".1" to="1" begin="0ms" dur="3008ms" fill="freeze"/></g>
-<!-- n6 -->
-<g id="node3" class="node" style="opacity:0.1"><title>x.b</title>
-<ellipse fill="rgb(239,255,15)" stroke="red" cx="27" cy="-162" rx="27" ry="18"/>
-<text text-anchor="middle" x="27" y="-158.3" font-family="sans" font-size="14.00">x.b</text>
-<animate attributeName="opacity" from=".1" to="1" begin="5026ms" dur="1008ms" fill="freeze"/></g>
-<!-- n5&#45;&gt;n6 -->
-<g id="edge2" class="edge" style="opacity:0.1"><title>n5-&gt;n6</title>
-<path fill="none" stroke="black" d="M61.0157,-217.116C55.5026,-208.345 48.5372,-197.264 42.3473,-187.416"/>
-<polygon fill="black" stroke="black" points="45.2298,-185.425 36.9448,-178.821 39.3033,-189.15 45.2298,-185.425"/>
-<animate attributeName="opacity" from=".1" to="1" begin="0ms" dur="3008ms" fill="freeze"/></g>
-<!-- n4 -->
-<g id="node6" class="node" style="opacity:0.1"><title>x_t1_t2.c</title>
-<ellipse fill="rgb(255,180,0)" stroke="red" cx="116" cy="-162" rx="44.393" ry="18"/>
-<text text-anchor="middle" x="116" y="-158.3" font-family="sans" font-size="14.00">t2.c</text>
-<animate attributeName="opacity" from=".1" to="1" begin="3013ms" dur="2008ms" fill="freeze"/></g>
-<!-- n5&#45;&gt;n4 -->
-<g id="edge6" class="edge" style="opacity:0.1"><title>n5-&gt;n4</title>
-<path fill="none" stroke="black" d="M81.2112,-217.116C86.6908,-208.592 93.5732,-197.886 99.767,-188.251"/>
-<polygon fill="black" stroke="black" points="102.738,-190.102 105.202,-179.797 96.85,-186.316 102.738,-190.102"/>
-<animate attributeName="opacity" from=".1" to="1" begin="0ms" dur="3008ms" fill="freeze"/></g>
-<!-- n3 -->
-<g id="node5" class="node" style="opacity:0.1"><title>x.z</title>
-<ellipse fill="rgb(255,0,0)" stroke="red" cx="116" cy="-90" rx="27" ry="18"/>
-<text text-anchor="middle" x="116" y="-86.3" font-family="sans" font-size="14.00">x.z</text>
-<animate attributeName="opacity" from=".1" to="1" begin="6263ms" dur="4008ms" fill="freeze"/></g>
-<!-- n6&#45;&gt;n3 -->
-<g id="edge3" class="edge" style="opacity:0.1"><title>n6-&gt;n3</title>
-<path fill="none" stroke="black" d="M43.7402,-147.834C57.0808,-137.341 75.9634,-122.489 91.0804,-110.6"/>
-<polygon fill="black" stroke="black" points="93.3359,-113.279 99.0322,-104.345 89.0084,-107.777 93.3359,-113.279"/>
-<animate attributeName="opacity" from=".1" to="1" begin="5026ms" dur="1008ms" fill="freeze"/></g>
-<!-- n7 -->
-<g id="node4" class="node" style="opacity:0.1"><title>x.y</title>
-<ellipse fill="rgb(167,255,87)" stroke="red" cx="205" cy="-162" rx="27" ry="18"/>
-<text text-anchor="middle" x="205" y="-158.3" font-family="sans" font-size="14.00">x.y</text>
-<animate attributeName="opacity" from=".1" to="1" begin="6040ms" dur="208ms" fill="freeze"/></g>
-<!-- n7&#45;&gt;n3 -->
-<g id="edge4" class="edge" style="opacity:0.1"><title>n7-&gt;n3</title>
-<path fill="none" stroke="black" d="M188.26,-147.834C174.919,-137.341 156.037,-122.489 140.92,-110.6"/>
-<polygon fill="black" stroke="black" points="142.992,-107.777 132.968,-104.345 138.664,-113.279 142.992,-107.777"/>
-<animate attributeName="opacity" from=".1" to="1" begin="6040ms" dur="208ms" fill="freeze"/></g>
-<!-- n3&#45;&gt;n2 -->
-<g id="edge1" class="edge" style="opacity:0.1"><title>n3-&gt;n2</title>
-<path fill="none" stroke="black" d="M116,-71.6966C116,-63.9827 116,-54.7125 116,-46.1124"/>
-<polygon fill="black" stroke="black" points="119.5,-46.1043 116,-36.1043 112.5,-46.1044 119.5,-46.1043"/>
-<animate attributeName="opacity" from=".1" to="1" begin="6263ms" dur="4008ms" fill="freeze"/></g>
-<!-- n4&#45;&gt;n3 -->
-<g id="edge5" class="edge" style="opacity:0.1"><title>n4-&gt;n3</title>
-<path fill="none" stroke="black" d="M116,-143.697C116,-135.983 116,-126.712 116,-118.112"/>
-<polygon fill="black" stroke="black" points="119.5,-118.104 116,-108.104 112.5,-118.104 119.5,-118.104"/>
-<animate attributeName="opacity" from=".1" to="1" begin="3013ms" dur="2008ms" fill="freeze"/></g>
-</g>
+  <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
+    <title>G</title>
+    <polygon fill="white" stroke="none" points="-4,4 -4,-256 236,-256 236,4 -4,4"/>
+    <!-- n2 -->
+    <g id="node1" class="node">
+      <title>all</title>
+      <ellipse fill="none" stroke="red" cx="116" cy="-18" rx="27" ry="18"/>
+      <text text-anchor="middle" x="116" y="-14.3" font-family="sans" font-size="14.00">all</text>
+    </g>
+    <!-- n5 -->
+    <g id="node2" class="node">
+      <title>x.a</title>
+      <ellipse fill="rgb(255,90,0)" stroke="red" cx="71" cy="-234" rx="27" ry="18"/>
+      <text text-anchor="middle" x="71" y="-230.3" font-family="sans" font-size="14.00">x.a</text>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+1ms" dur="3009ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n6 -->
+    <g id="node3" class="node">
+      <title>x.b</title>
+      <ellipse fill="rgb(239,255,15)" stroke="red" cx="27" cy="-162" rx="27" ry="18"/>
+      <text text-anchor="middle" x="27" y="-158.3" font-family="sans" font-size="14.00">x.b</text>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+5028ms" dur="1009ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n5&#45;&gt;n6 -->
+    <g id="edge2" class="edge">
+      <title>n5-&gt;n6</title>
+      <path fill="none" stroke="black" d="M61.0157,-217.116C55.5026,-208.345 48.5372,-197.264 42.3473,-187.416"/>
+      <polygon fill="black" stroke="black" points="45.2298,-185.425 36.9448,-178.821 39.3033,-189.15 45.2298,-185.425"/>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+1ms" dur="3009ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n4 -->
+    <g id="node6" class="node">
+      <title>x_t1_t2.c</title>
+      <ellipse fill="rgb(255,180,0)" stroke="red" cx="116" cy="-162" rx="44.393" ry="18"/>
+      <text text-anchor="middle" x="116" y="-158.3" font-family="sans" font-size="14.00">t2.c</text>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+3014ms" dur="2010ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n5&#45;&gt;n4 -->
+    <g id="edge6" class="edge">
+      <title>n5-&gt;n4</title>
+      <path fill="none" stroke="black" d="M81.2112,-217.116C86.6908,-208.592 93.5732,-197.886 99.767,-188.251"/>
+      <polygon fill="black" stroke="black" points="102.738,-190.102 105.202,-179.797 96.85,-186.316 102.738,-190.102"/>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+1ms" dur="3009ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n3 -->
+    <g id="node5" class="node">
+      <title>x.z</title>
+      <ellipse fill="rgb(255,0,0)" stroke="red" cx="116" cy="-90" rx="27" ry="18"/>
+      <text text-anchor="middle" x="116" y="-86.3" font-family="sans" font-size="14.00">x.z</text>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+6253ms" dur="4008ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n6&#45;&gt;n3 -->
+    <g id="edge3" class="edge">
+      <title>n6-&gt;n3</title>
+      <path fill="none" stroke="black" d="M43.7402,-147.834C57.0808,-137.341 75.9634,-122.489 91.0804,-110.6"/>
+      <polygon fill="black" stroke="black" points="93.3359,-113.279 99.0322,-104.345 89.0084,-107.777 93.3359,-113.279"/>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+5028ms" dur="1009ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n7 -->
+    <g id="node4" class="node">
+      <title>x.y</title>
+      <ellipse fill="rgb(167,255,87)" stroke="red" cx="205" cy="-162" rx="27" ry="18"/>
+      <text text-anchor="middle" x="205" y="-158.3" font-family="sans" font-size="14.00">x.y</text>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+6040ms" dur="210ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n7&#45;&gt;n3 -->
+    <g id="edge4" class="edge">
+      <title>n7-&gt;n3</title>
+      <path fill="none" stroke="black" d="M188.26,-147.834C174.919,-137.341 156.037,-122.489 140.92,-110.6"/>
+      <polygon fill="black" stroke="black" points="142.992,-107.777 132.968,-104.345 138.664,-113.279 142.992,-107.777"/>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+6040ms" dur="210ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n3&#45;&gt;n2 -->
+    <g id="edge1" class="edge">
+      <title>n3-&gt;n2</title>
+      <path fill="none" stroke="black" d="M116,-71.6966C116,-63.9827 116,-54.7125 116,-46.1124"/>
+      <polygon fill="black" stroke="black" points="119.5,-46.1043 116,-36.1043 112.5,-46.1044 119.5,-46.1043"/>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+6253ms" dur="4008ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+    <!-- n4&#45;&gt;n3 -->
+    <g id="edge5" class="edge">
+      <title>n4-&gt;n3</title>
+      <path fill="none" stroke="black" d="M116,-143.697C116,-135.983 116,-126.712 116,-118.112"/>
+      <polygon fill="black" stroke="black" points="119.5,-118.104 116,-108.104 112.5,-118.104 119.5,-118.104"/>
+      <animate attributeName="opacity" from=".1" to="1" begin="timer.begin+3014ms" dur="2010ms" fill="freeze"/>
+      <set attributeName="opacity" begin="timer.begin" to=".1"/>
+    </g>
+  </g>
+  <animate id="timer" attributeName="visibility" from="hide" to="hide" begin="0;timer.end" dur="11s"/>
 </svg>
