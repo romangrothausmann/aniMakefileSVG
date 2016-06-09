@@ -84,6 +84,18 @@ $xpc->registerNs(x => 'http://www.w3.org/2000/svg'); # declare the namespace (NS
 print STDERR "Parsing done.\n";
 
 
+### create dummy loop as timing reference
+## https://codepen.io/danjiro/post/how-to-make-svg-loop-animation
+my $root = $doc->documentElement();
+my $node = $doc->createElement('animate');
+$node->setAttribute('id', "timer");
+$node->setAttribute('attributeName', "visibility");
+$node->setAttribute('from', "hide");
+$node->setAttribute('to', "hide");
+$node->setAttribute('begin', "0;timer.end");
+$node->setAttribute('dur', sprintf('%ds', ceil($totDur)));
+$root->appendChild($node);
+
 foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be repeated for every node specidfication!!! http://stackoverflow.com/questions/4083550/why-does-xmllibxml-find-no-nodes-for-this-xpath-query-when-using-a-namespace#4083929
     my $nameVal= $name->to_literal;
     my $fname= $xpc->findvalue('..//x:text', $name);
@@ -99,7 +111,7 @@ foreach my $name ($xpc->findnodes('//x:g[x:text]/x:title')) { # NS needs to be r
 	    $node->setAttribute('attributeName', "opacity");
 	    $node->setAttribute('from', ".1");
 	    $node->setAttribute('to', "1");
-	    $node->setAttribute('begin', sprintf('%dms', $beg));
+	    $node->setAttribute('begin', sprintf('timer.begin+%dms', $beg)); # start relative to timer
 	    $node->setAttribute('dur', sprintf('%dms', $dur));
 	    $node->setAttribute('fill', "freeze");
 	    $group->appendChild($node);
